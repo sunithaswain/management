@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+<!-- contact section -->
+        <form method="post" action="{% url 'content_details' %}" >
+          {% csrf_token %}
+          <input name="user_name" id="name" type="text" placeholder="Your name..." >
+          <input name="email" id="email" type="email" placeholder="Email Address..." >
+          <textarea name="projectdetails" id="comments" placeholder="Project Details..."></textarea>
+          <input type="submit" id="submit" name="send" class="submitBnt" value="Send your query">
+          <p>{{message}}</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- contact section --> 
+
+</div>
+{%if message%}
+<p class="alert alert-primary" role="alert">{{message}}</p>
+{% endif %}
+{% endblock %}

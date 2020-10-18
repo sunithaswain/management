@@ -1,0 +1,17 @@
+links icham ga profile ki
+
+
+
+
+in urls.py we pass url with user id as given below
+===========================================================================
+url(r'^userprofile/(?P<user_id>[\d]+)',views.profiling, name='userprofiles'),
+
+in templates
+===============================================
+<button type="logs" class="btn btn-primary"><a href="{% url 'userprofiles' request.user.id %}" style='color:black'>Profile</a></button> 
+
+
+in views  
+============================================================================
+return redirect("/details/userprofile/%d"%user_id)

@@ -1,0 +1,47 @@
+{% load staticfiles %}
+<html>
+<head>
+<!-- <link rel="stylesheet" href="{{ STATIC_URL }}css/vimeo.css"> -->
+<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/navigation.css" type="text/css">
+<!-- <link rel="stylesheet" href="../../static/css/vimeo.css">  -->
+</head>
+<body>
+<!--main start-->
+<div id ="main" style="height:1100px;width:1000px;margin-left:150px;">
+<ul class="one-ul">
+<button type="registering" class="btn btn-primary"><a href="{% url 'registering' %}"  style='color:white'>registering</a></button> 
+
+<button type="logs" class="btn btn-primary"><a href="{% url 'logging' %}" style='color:black'>logs</a></button> 
+
+{{request.user}}
+
+{% if not request.user.is_anonymous %}
+
+<button type="logs" class="btn btn-primary"><a href="{% url 'userprofiles' request.user.id %}" style='color:black'>Profile</a></button> 
+
+<button type="logs" class="btn btn-primary"><a href="{% url 'change_pwd' %}" style='color:black'>Change Password</a></button> 
+
+<button type="logs" class="btn btn-primary"><a href="{% url 'logout' %}" style='color:black'>Logout</a></button> 
+
+
+{% endif %}
+</ul>
+		
+	<!-- </ul> -->
+	<!-- <ul class="one-ul"> -->
+	<!-- <li> -->
+	<!-- <li> registering </li><br> -->
+	<!-- <li> logs</li> -->
+	<!-- </ul> -->
+		
+	<br></br>
+	
+	<div>
+		{% block content %}
+		{% endblock %}
+	</div>
+	
+</div>
+</body>
+</html>

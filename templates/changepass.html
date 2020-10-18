@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="{% url 'change_pwd' %}" method="post">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="name">old_password:</label>
+    <input type="text" class="form-control" id="user_name" name='oldpassword' class="btn btn-primary">
+  </div>  
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" id="pwd" name='newpassword' class="btn btn-primary">
+  </div>
+  <button type="submit" class="btn btn-primary">finalpassword</button>
+  <br>
+  {% if msge %}
+  <p class="alert alert-primary" role="alert">{{msge}}</p>
+  {% endif %}
+</form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ul>
+<li class="btn btn-primary">{{username }}</li>
+<li class="btn btn-primary">{{password }}</li>
+<!-- <li class="btn btn-primary">{{mobile }}</li> -->
+<!-- <li class="btn btn-primary">{{address }}</li></ul> -->
+<br>
+<br>
+<form method="post" enctype="multipart/form-data" >
+    {% csrf_token %}
+    <input type="file" name="image">
+    <button type="submit" class="btn btn-success">Upload</button>
+  </form>
+{{MEDIA_URL}}
+{{STATIC_URL}}
+  {% if profile_image %}
+  	<a href="{{ profile_image }}">{{ profile_image }}</a>
+  	<br>
+  	Image is : <img src="{{ MEDIA_URL }}{{ profile_image }}" style="width:200px;height:400px;">
+  	<!-- Image is : <img src="../../media/{{ profile_image }}"> -->
+  {% endif %}
+{% endblock %}
+
+

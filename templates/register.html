@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<form id='form' name='register' method='post' enctype='multipart/form-data' action="{% url 'registering' %}">
+	 {% csrf_token %}
+<ul>
+    <label>username</label>
+    {% if username %}
+    <input type="text"  name="username" class="form-control" value="{{username}}" class="btn btn-primary"/><br>
+    {% else %}
+    <input type="text"  name="username" class="form-control" placeholder="Please Enter yous name here" class="btn btn-primary"/><br>
+    {% endif %}
+    <p class="help-block text-danger" >{{form.username.errors}}</p>/><br>
+    <label>password</label>
+    {% if password %}
+    <input type="password"  name="password" class="form-control" value="{{password}}" class="btn btn-primary"/><br>
+    {% else %}
+    <input type="password"  name="password" class="form-control" placeholder="Please Enter yous password here" class="btn btn-primary"/><br>
+    {% endif %}
+    <p class="help-block text-danger" >{{form.password.errors}}</p>/><br>
+    <!-- <label>Address</label>
+    <input type="text"  name="Address"/><br>
+    <label>Mobilenumber</label>
+    <input type="text"  name="Mobilenumber"/><br> -->
+<button type="submit" class="btn btn-primary">Click</button>
+<br>
+{%if message%}
+<p class="alert alert-primary" role="alert">{{message}}</p>
+{% endif %}
+</ul>
+</form>
+{% endblock %}
